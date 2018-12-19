@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="//blog.17terrific.com">
   <title>Centos 7 开发环境搭建 | Exclusive丨星空灬</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="yum 操作 1234567$ yum update   -- 更新 yum 下的所有软件包# 查看安装位置 （通过rpm）$ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称$ rpm -ql &amp;quot;文件名称&amp;quot;   -- 根据具体文件全称显示安装后文件所在路径  安装 Java SDK （本文安装 JDK 1.8）  123456789101">
+  <meta name="description" content="1. yum 操作1234567$ yum update   -- 更新 yum 下的所有软件包   # 查看安装位置 （通过rpm）   $ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称   $ rpm -ql &quot;文件名称&quot;   -- 根据具体文件全称显示安装后文件所在路径 2. 安装 Java SDK （本文安装 JDK 1.8）12345678910$">
 <meta name="keywords" content="Centos 7">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos 7 开发环境搭建">
 <meta property="og:url" content="//blog.17terrific.com/2018/12/19/Linux开发环境/index.html">
 <meta property="og:site_name" content="Exclusive丨星空灬">
-<meta property="og:description" content="yum 操作 1234567$ yum update   -- 更新 yum 下的所有软件包# 查看安装位置 （通过rpm）$ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称$ rpm -ql &amp;quot;文件名称&amp;quot;   -- 根据具体文件全称显示安装后文件所在路径  安装 Java SDK （本文安装 JDK 1.8）  123456789101">
+<meta property="og:description" content="1. yum 操作1234567$ yum update   -- 更新 yum 下的所有软件包   # 查看安装位置 （通过rpm）   $ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称   $ rpm -ql &quot;文件名称&quot;   -- 根据具体文件全称显示安装后文件所在路径 2. 安装 Java SDK （本文安装 JDK 1.8）12345678910$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-19T06:42:28.042Z">
+<meta property="og:updated_time" content="2018-12-19T06:45:45.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos 7 开发环境搭建">
-<meta name="twitter:description" content="yum 操作 1234567$ yum update   -- 更新 yum 下的所有软件包# 查看安装位置 （通过rpm）$ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称$ rpm -ql &amp;quot;文件名称&amp;quot;   -- 根据具体文件全称显示安装后文件所在路径  安装 Java SDK （本文安装 JDK 1.8）  123456789101">
+<meta name="twitter:description" content="1. yum 操作1234567$ yum update   -- 更新 yum 下的所有软件包   # 查看安装位置 （通过rpm）   $ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称   $ rpm -ql &quot;文件名称&quot;   -- 根据具体文件全称显示安装后文件所在路径 2. 安装 Java SDK （本文安装 JDK 1.8）12345678910$">
   
   
     <link rel="icon" href="http://blog.17terrific.com/assets/images/favicon.png">
@@ -158,34 +158,19 @@
 
         
         <a href="/2018/12/19/Linux开发环境/" class="archive-article-date">
-  	<time datetime="2018-12-19T06:42:28.042Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
+  	<time datetime="2018-12-19T06:45:45.621Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><p>yum 操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ yum update   -- 更新 yum 下的所有软件包</span><br><span class="line"></span><br><span class="line"># 查看安装位置 （通过rpm）</span><br><span class="line"></span><br><span class="line">$ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称</span><br><span class="line"></span><br><span class="line">$ rpm -ql &quot;文件名称&quot;   -- 根据具体文件全称显示安装后文件所在路径</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 Java SDK （本文安装 JDK 1.8）</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    $ yum -y list java*   --查看yum的jdk安装包</span><br><span class="line">    </span><br><span class="line">    $ yum install java-1.8.0-openjdk*  --安装java 1.8.0所有Java程序  </span><br><span class="line"></span><br><span class="line">    # 等待安装完成输入一下命令验证安装是否完成</span><br><span class="line">    $ java -version   -- 输出如下</span><br><span class="line">    </span><br><span class="line">    openjdk version &quot;1.8.0_191&quot;</span><br><span class="line">    OpenJDK Runtime Environment (build 1.8.0_191-b12)</span><br><span class="line">    OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)</span><br><span class="line">    ``` </span><br><span class="line">3. 安装 Nginx</span><br></pre></td></tr></table></figure>
-<p> $ yum install nginx   – 使用yum安装nginx</p>
-<p> $ chkconfig nginx on  – 设置开机启动</p>
-<p> $ systemctl start nginx   – 启动nginx (“service nginx start”是centos6.x的命令)</p>
-<p> $ systemctl stop nginx    – 停止nginx (“service nginx stop”是centos6.x的命令)</p>
-<p> $ cat /etc/nginx/nginx.conf   – nginx 配置文件</p>
-<p> $ firewall-cmd –permanent –zone=public –add-port=80/tcp    – 添加到防火墙</p>
-<p> $ systemctl restart firewalld     – 重启防火墙</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">4. 安装 nodejs</span><br></pre></td></tr></table></figure>
-<p> $ curl –silent –location <a href="https://rpm.nodesource.com/setup_10.x" target="_blank" rel="noopener">https://rpm.nodesource.com/setup_10.x</a> | bash -</p>
-<p> $ yum install -y nodejs</p>
-<h1 id="如需要安装其它版本请查看，https-github-com-nodesource-distributions"><a href="#如需要安装其它版本请查看，https-github-com-nodesource-distributions" class="headerlink" title="如需要安装其它版本请查看，https://github.com/nodesource/distributions"></a>如需要安装其它版本请查看，<a href="https://github.com/nodesource/distributions" target="_blank" rel="noopener">https://github.com/nodesource/distributions</a></h1><p> <code>`</code> </p>
-</li>
-</ol>
+        <h6 id="1-yum-操作"><a href="#1-yum-操作" class="headerlink" title="1. yum 操作"></a>1. yum 操作</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ yum update   -- 更新 yum 下的所有软件包</span><br><span class="line">   </span><br><span class="line"><span class="comment"># 查看安装位置 （通过rpm）</span></span><br><span class="line">   </span><br><span class="line">$ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称</span><br><span class="line">   </span><br><span class="line">$ rpm -ql <span class="string">"文件名称"</span>   -- 根据具体文件全称显示安装后文件所在路径</span><br></pre></td></tr></table></figure>
+<h6 id="2-安装-Java-SDK-（本文安装-JDK-1-8）"><a href="#2-安装-Java-SDK-（本文安装-JDK-1-8）" class="headerlink" title="2. 安装 Java SDK （本文安装 JDK 1.8）"></a>2. 安装 Java SDK （本文安装 JDK 1.8）</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y list java*   --查看yum的jdk安装包</span><br><span class="line">    </span><br><span class="line">$ yum install java-1.8.0-openjdk*  --安装java 1.8.0所有Java程序  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 等待安装完成输入一下命令验证安装是否完成</span></span><br><span class="line">$ java -version   -- 输出如下:</span><br><span class="line">    </span><br><span class="line">`openjdk version <span class="string">"1.8.0_191"</span>`</span><br><span class="line">`OpenJDK Runtime Environment (build 1.8.0_191-b12)`</span><br><span class="line">`OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)`</span><br></pre></td></tr></table></figure>
+<h6 id="3-安装-Nginx"><a href="#3-安装-Nginx" class="headerlink" title="3. 安装 Nginx"></a>3. 安装 Nginx</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ yum install nginx   -- 使用yum安装nginx</span><br><span class="line">    </span><br><span class="line">$ chkconfig nginx on  -- 设置开机启动</span><br><span class="line">    </span><br><span class="line">$ systemctl start nginx   -- 启动nginx (<span class="string">"service nginx start"</span>是centos6.x的命令)</span><br><span class="line">    </span><br><span class="line">$ systemctl stop nginx    -- 停止nginx (<span class="string">"service nginx stop"</span>是centos6.x的命令)</span><br><span class="line">    </span><br><span class="line">$ cat /etc/nginx/nginx.conf   -- nginx 配置文件</span><br><span class="line">    </span><br><span class="line">$ firewall-cmd --permanent --zone=public --add-port=80/tcp    -- 添加到防火墙</span><br><span class="line">    </span><br><span class="line">$ systemctl restart firewalld     -- 重启防火墙</span><br></pre></td></tr></table></figure>
+<h6 id="4-安装-nodejs"><a href="#4-安装-nodejs" class="headerlink" title="4. 安装 nodejs"></a>4. 安装 nodejs</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -</span><br><span class="line">    </span><br><span class="line">$ yum install -y nodejs</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 如需要安装其它版本请查看，https://github.com/nodesource/distributions</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
+<h6 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h6><table>
 <thead>
 <tr>
 <th style="text-align:center">命令</th>
