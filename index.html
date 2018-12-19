@@ -145,6 +145,149 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux开发环境" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/19/Linux开发环境/">Centos 7 开发环境搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/19/Linux开发环境/" class="archive-article-date">
+  	<time datetime="2018-12-19T06:42:28.042Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>yum 操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ yum update   -- 更新 yum 下的所有软件包</span><br><span class="line"></span><br><span class="line"># 查看安装位置 （通过rpm）</span><br><span class="line"></span><br><span class="line">$ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称</span><br><span class="line"></span><br><span class="line">$ rpm -ql &quot;文件名称&quot;   -- 根据具体文件全称显示安装后文件所在路径</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 Java SDK （本文安装 JDK 1.8）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    $ yum -y list java*   --查看yum的jdk安装包</span><br><span class="line">    </span><br><span class="line">    $ yum install java-1.8.0-openjdk*  --安装java 1.8.0所有Java程序  </span><br><span class="line"></span><br><span class="line">    # 等待安装完成输入一下命令验证安装是否完成</span><br><span class="line">    $ java -version   -- 输出如下</span><br><span class="line">    </span><br><span class="line">    openjdk version &quot;1.8.0_191&quot;</span><br><span class="line">    OpenJDK Runtime Environment (build 1.8.0_191-b12)</span><br><span class="line">    OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)</span><br><span class="line">    ``` </span><br><span class="line">3. 安装 Nginx</span><br></pre></td></tr></table></figure>
+<p> $ yum install nginx   – 使用yum安装nginx</p>
+<p> $ chkconfig nginx on  – 设置开机启动</p>
+<p> $ systemctl start nginx   – 启动nginx (“service nginx start”是centos6.x的命令)</p>
+<p> $ systemctl stop nginx    – 停止nginx (“service nginx stop”是centos6.x的命令)</p>
+<p> $ cat /etc/nginx/nginx.conf   – nginx 配置文件</p>
+<p> $ firewall-cmd –permanent –zone=public –add-port=80/tcp    – 添加到防火墙</p>
+<p> $ systemctl restart firewalld     – 重启防火墙</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">4. 安装 nodejs</span><br></pre></td></tr></table></figure>
+<p> $ curl –silent –location <a href="https://rpm.nodesource.com/setup_10.x" target="_blank" rel="noopener">https://rpm.nodesource.com/setup_10.x</a> | bash -</p>
+<p> $ yum install -y nodejs</p>
+<h1 id="如需要安装其它版本请查看，https-github-com-nodesource-distributions"><a href="#如需要安装其它版本请查看，https-github-com-nodesource-distributions" class="headerlink" title="如需要安装其它版本请查看，https://github.com/nodesource/distributions"></a>如需要安装其它版本请查看，<a href="https://github.com/nodesource/distributions" target="_blank" rel="noopener">https://github.com/nodesource/distributions</a></h1><p> <code>`</code> </p>
+</li>
+</ol>
+<hr>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">whereis java</td>
+<td style="text-align:center">查看软件路径</td>
+</tr>
+<tr>
+<td style="text-align:center">which java</td>
+<td style="text-align:center">查看软件执行路径</td>
+</tr>
+<tr>
+<td style="text-align:center">cut -d : -f 1 /etc/passwd</td>
+<td style="text-align:center">查看系统中有哪些用户</td>
+</tr>
+<tr>
+<td style="text-align:center">chmod -R “权限” “文件”</td>
+<td style="text-align:center">设置文件权限</td>
+</tr>
+<tr>
+<td style="text-align:center">mkdir “目录名称”</td>
+<td style="text-align:center">创建目录</td>
+</tr>
+<tr>
+<td style="text-align:center">touch “文件名称”</td>
+<td style="text-align:center">创建文件</td>
+</tr>
+<tr>
+<td style="text-align:center">rm -r “文件名称”</td>
+<td style="text-align:center">删除文件</td>
+</tr>
+<tr>
+<td style="text-align:center">rm -rf “文件名称”</td>
+<td style="text-align:center">删除文件(不提示直接删除)</td>
+</tr>
+<tr>
+<td style="text-align:center">cat “文件名称”</td>
+<td style="text-align:center">输出文件内容</td>
+</tr>
+<tr>
+<td style="text-align:center">userdel -rf “用户名”</td>
+<td style="text-align:center">删除用户和主目录</td>
+</tr>
+</tbody>
+</table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Centos 7</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/19/Linux开发环境/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-部署hexo" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -158,7 +301,7 @@
 
         
         <a href="/2018/12/19/部署hexo/" class="archive-article-date">
-  	<time datetime="2018-12-19T06:26:35.166Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
+  	<time datetime="2018-12-19T06:35:56.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
 </a>
         
       </header>
@@ -191,7 +334,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Centos 7</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hexo博客</a>
         		</li>
       		
 		</ul>
@@ -317,6 +460,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Centos 7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hexo博客</a>
               </li>
             
             <div class="clearfix"></div>
