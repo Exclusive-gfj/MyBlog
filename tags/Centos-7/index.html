@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="//blog.17terrific.com">
-  <title>Centos 7 开发环境搭建 | Exclusive丨星空灬</title>
+  <title>Tag: Centos 7 | Exclusive丨星空灬</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. yum 操作1234567$ yum update   -- 更新 yum 下的所有软件包   # 查看安装位置 （通过rpm）   $ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称   $ rpm -ql &quot;文件名称&quot;   -- 根据具体文件全称显示安装后文件所在路径 2. 安装 Java SDK （本文安装 JDK 1.8）12345678910$">
-<meta name="keywords" content="阿里云服务器,Centos 7">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Centos 7 开发环境搭建">
-<meta property="og:url" content="//blog.17terrific.com/2018/12/19/阿里云开发环境/index.html">
+  <meta name="description" content="To strive, to seek, to find, and not to yield.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Exclusive丨星空灬">
+<meta property="og:url" content="//blog.17terrific.com/tags/Centos-7/index.html">
 <meta property="og:site_name" content="Exclusive丨星空灬">
-<meta property="og:description" content="1. yum 操作1234567$ yum update   -- 更新 yum 下的所有软件包   # 查看安装位置 （通过rpm）   $ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称   $ rpm -ql &quot;文件名称&quot;   -- 根据具体文件全称显示安装后文件所在路径 2. 安装 Java SDK （本文安装 JDK 1.8）12345678910$">
+<meta property="og:description" content="To strive, to seek, to find, and not to yield.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-19T07:02:16.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Centos 7 开发环境搭建">
-<meta name="twitter:description" content="1. yum 操作1234567$ yum update   -- 更新 yum 下的所有软件包   # 查看安装位置 （通过rpm）   $ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称   $ rpm -ql &quot;文件名称&quot;   -- 根据具体文件全称显示安装后文件所在路径 2. 安装 Java SDK （本文安装 JDK 1.8）12345678910$">
+<meta name="twitter:title" content="Exclusive丨星空灬">
+<meta name="twitter:description" content="To strive, to seek, to find, and not to yield.">
   
   
     <link rel="icon" href="http://blog.17terrific.com/assets/images/favicon.png">
@@ -145,152 +143,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-阿里云开发环境" class="article article-type-post " itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Centos 7 开发环境搭建
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/12/25/Linux学习/" class="archive-article-date">
+  	<time datetime="2018-12-25T09:14:44.970Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-25</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/12/25/Linux学习/">Linux 学习</a>
     </h1>
   
 
-        
-        <a href="/2018/12/19/阿里云开发环境/" class="archive-article-date">
-  	<time datetime="2018-12-19T07:02:16.111Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="1-yum-操作"><a href="#1-yum-操作" class="headerlink" title="1. yum 操作"></a>1. yum 操作</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ yum update   -- 更新 yum 下的所有软件包</span><br><span class="line">   </span><br><span class="line"><span class="comment"># 查看安装位置 （通过rpm）</span></span><br><span class="line">   </span><br><span class="line">$ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称</span><br><span class="line">   </span><br><span class="line">$ rpm -ql <span class="string">"文件名称"</span>   -- 根据具体文件全称显示安装后文件所在路径</span><br></pre></td></tr></table></figure>
-<h6 id="2-安装-Java-SDK-（本文安装-JDK-1-8）"><a href="#2-安装-Java-SDK-（本文安装-JDK-1-8）" class="headerlink" title="2. 安装 Java SDK （本文安装 JDK 1.8）"></a>2. 安装 Java SDK （本文安装 JDK 1.8）</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y list java*   -- 查看yum的jdk安装包</span><br><span class="line">    </span><br><span class="line">$ yum install java-1.8.0-openjdk*  -- 安装java 1.8.0所有Java程序  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 等待安装完成输入一下命令验证安装是否完成</span></span><br><span class="line">$ java -version   -- 输出如下:</span><br><span class="line"></span><br><span class="line">Openjdk version <span class="string">"1.8.0_191"</span></span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_191-b12)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)</span><br></pre></td></tr></table></figure>
-<h6 id="3-安装-Nginx"><a href="#3-安装-Nginx" class="headerlink" title="3. 安装 Nginx"></a>3. 安装 Nginx</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ yum install nginx   -- 使用yum安装nginx</span><br><span class="line">    </span><br><span class="line">$ chkconfig nginx on  -- 设置开机启动</span><br><span class="line">    </span><br><span class="line">$ systemctl start nginx   -- 启动nginx (<span class="string">"service nginx start"</span>是centos6.x的命令)</span><br><span class="line">    </span><br><span class="line">$ systemctl stop nginx    -- 停止nginx (<span class="string">"service nginx stop"</span>是centos6.x的命令)</span><br><span class="line">    </span><br><span class="line">$ cat /etc/nginx/nginx.conf   -- nginx 配置文件</span><br><span class="line">    </span><br><span class="line">$ firewall-cmd --permanent --zone=public --add-port=80/tcp    -- 添加到防火墙</span><br><span class="line">    </span><br><span class="line">$ systemctl restart firewalld     -- 重启防火墙</span><br></pre></td></tr></table></figure>
-<h6 id="4-安装-nodejs"><a href="#4-安装-nodejs" class="headerlink" title="4. 安装 nodejs"></a>4. 安装 nodejs</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -</span><br><span class="line">    </span><br><span class="line">$ yum install -y nodejs</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 如需要安装其它版本请查看，https://github.com/nodesource/distributions</span></span><br></pre></td></tr></table></figure>
-<h6 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h6><table>
-<thead>
-<tr>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">whereis java</td>
-<td style="text-align:center">查看软件路径</td>
-</tr>
-<tr>
-<td style="text-align:center">which java</td>
-<td style="text-align:center">查看软件执行路径</td>
-</tr>
-<tr>
-<td style="text-align:center">cut -d : -f 1 /etc/passwd</td>
-<td style="text-align:center">查看系统中有哪些用户</td>
-</tr>
-<tr>
-<td style="text-align:center">chmod -R “权限” “文件”</td>
-<td style="text-align:center">设置文件权限</td>
-</tr>
-<tr>
-<td style="text-align:center">mkdir “目录名称”</td>
-<td style="text-align:center">创建目录</td>
-</tr>
-<tr>
-<td style="text-align:center">touch “文件名称”</td>
-<td style="text-align:center">创建文件</td>
-</tr>
-<tr>
-<td style="text-align:center">rm -r “文件名称”</td>
-<td style="text-align:center">删除文件</td>
-</tr>
-<tr>
-<td style="text-align:center">rm -rf “文件名称”</td>
-<td style="text-align:center">删除文件(不提示直接删除)</td>
-</tr>
-<tr>
-<td style="text-align:center">cat “文件名称”</td>
-<td style="text-align:center">输出文件内容</td>
-</tr>
-<tr>
-<td style="text-align:center">userdel -rf “用户名”</td>
-<td style="text-align:center">删除用户和主目录</td>
-</tr>
-</tbody>
-</table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">阿里云服务器,Centos 7</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Centos 7</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/12/19/服务器遇到的问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          搭建阿里云服务器遇到的问题
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -313,9 +219,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -380,6 +286,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">阿里云服务器,Centos 7,Hexo博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Centos 7</a>
               </li>
             
             <div class="clearfix"></div>
