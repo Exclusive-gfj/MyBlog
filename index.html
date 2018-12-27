@@ -152,13 +152,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/26/服务器遇到的问题/">搭建阿里云服务器遇到的问题</a>
+      <a class="article-title" href="/2018/12/27/服务器遇到的问题/">搭建阿里云服务器遇到的问题</a>
     </h1>
   
 
         
-        <a href="/2018/12/26/服务器遇到的问题/" class="archive-article-date">
-  	<time datetime="2018-12-26T14:50:58.030Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-26</time>
+        <a href="/2018/12/27/服务器遇到的问题/" class="archive-article-date">
+  	<time datetime="2018-12-27T03:35:41.354Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-27</time>
 </a>
         
       </header>
@@ -182,6 +182,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">如果报错 ERROR 1396 (HY000): Operation ALTER USER failed <span class="keyword">for</span> <span class="string">'root'</span>@<span class="string">'%'</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 原因：</span></span><br><span class="line">    2). 远程访问权限不正确。</span><br><span class="line"><span class="comment"># 解决方案：</span></span><br><span class="line">    2.1). 登录mysql控制台</span><br><span class="line">    $ mysql -uroot -p</span><br><span class="line">    </span><br><span class="line">    2.2). 修改权限（ALL表示授予所有权限、*.*表示所有数据库中的所有表、%表示任意IP可以远程连接）</span><br><span class="line">    $ GRANT ALL ON *.* TO <span class="string">'[用户名]'</span>@<span class="string">'%'</span>;</span><br><span class="line">    或者</span><br><span class="line">    $ GRANT ALL PRIVILEGES ON *.* TO ROOT@<span class="string">"%"</span> IDENTIFIED BY <span class="string">"密码"</span>;</span><br><span class="line">    </span><br><span class="line">    2.3). 刷新</span><br><span class="line">    $  FLUSH PRIVILEGES;</span><br><span class="line"><span class="comment"># 查看权限</span></span><br><span class="line">mysql&gt; use mysql;</span><br><span class="line">Database changed</span><br><span class="line">    </span><br><span class="line">mysql&gt; select user,host from user;</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| user             | host      |</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| mysql.infoschema | localhost |</span><br><span class="line">| mysql.session    | localhost |</span><br><span class="line">| mysql.sys        | localhost |</span><br><span class="line">| root             | % |</span><br><span class="line">+------------------+-----------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">2003 - Can<span class="string">'t connect to MySQL server on '</span>IP<span class="string">' (61 "Connection refused")</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 原因：</span></span><br><span class="line"><span class="string">    3). 它是屏蔽掉一切TCP/IP连接 。</span></span><br><span class="line"><span class="string"># 解决方案：</span></span><br><span class="line"><span class="string">    3.1). MySQL 服务加入防火墙</span></span><br><span class="line"><span class="string">    $ sudo firewall-cmd --zone=public --permanent --add-service=mysql</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    3.2). 重启防火墙</span></span><br><span class="line"><span class="string">    $ sudo systemctl restart firewalld</span></span><br><span class="line"><span class="string">需要注意一个问题：本文使用阿里云服务器，端口默认是不允许访问的需要到控制台中添加安全组</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">GROUP BY 语句不兼容问题。</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原因：</span></span><br><span class="line">    4). MySql 8.0 默认是不开启 only_full_group_by 模式的所以 group by 语句就报错</span><br><span class="line"><span class="comment"># 解决方案：</span></span><br><span class="line">    4.1). 登录mysql控制台</span><br><span class="line">    $ mysql&gt; mysql -uroot -p</span><br><span class="line">    </span><br><span class="line">    4.2). 查看sql_mode</span><br><span class="line">    $  mysql&gt; select @@global.sql_mode;</span><br><span class="line">    <span class="comment"># 查询出来的值为：ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span></span><br><span class="line">    </span><br><span class="line">    4.3). 去掉ONLY_FULL_GROUP_BY，重新设置值：   </span><br><span class="line">    $ mysql&gt; <span class="built_in">set</span> @@global.sql_mode =<span class="string">'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'</span>;</span><br><span class="line">    </span><br><span class="line">    4.4). 上面是改变了全局sql_mode，对于新建的数据库有效。对于已存在的数据库，则需要在对应的数据下执行：  </span><br><span class="line">    $ mysql&gt; <span class="built_in">set</span> sql_mode =<span class="string">'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="阿里云服务器使用-Redis"><a href="#阿里云服务器使用-Redis" class="headerlink" title="阿里云服务器使用 Redis"></a>阿里云服务器使用 Redis</h4><ul>
+<li>遇到如下问题：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Can’t connect to redis-service</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 原因：</span></span><br><span class="line">    1). Redis 默认是不允许外网访问的</span><br><span class="line"><span class="comment"># 解决方案：</span></span><br><span class="line">    1.1). 修改 redis.conf 文件</span><br><span class="line">    $ vim /etc/redis.conf</span><br><span class="line">    <span class="built_in">bind</span> 127.0.0.1 改为 <span class="built_in">bind</span> 0.0.0.0(可选) 或注释掉，当然也可改成访问者的IP</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
 
       
@@ -204,7 +208,314 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/26/服务器遇到的问题/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/27/服务器遇到的问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-阿里云开发环境" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/27/阿里云开发环境/">Centos 7 开发环境搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/27/阿里云开发环境/" class="archive-article-date">
+  	<time datetime="2018-12-27T03:33:23.613Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="1-yum-操作"><a href="#1-yum-操作" class="headerlink" title="1. yum 操作"></a>1. yum 操作</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ yum update   -- 更新 yum 下的所有软件包</span><br><span class="line">   </span><br><span class="line"><span class="comment"># 查看安装位置 （通过rpm）</span></span><br><span class="line">   </span><br><span class="line">$ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称</span><br><span class="line">   </span><br><span class="line">$ rpm -ql <span class="string">"文件名称"</span>   -- 根据具体文件全称显示安装后文件所在路径</span><br></pre></td></tr></table></figure>
+<h6 id="2-安装-Java-SDK-（本文安装-JDK-1-8）"><a href="#2-安装-Java-SDK-（本文安装-JDK-1-8）" class="headerlink" title="2. 安装 Java SDK （本文安装 JDK 1.8）"></a>2. 安装 Java SDK （本文安装 JDK 1.8）</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y list java*   -- 查看yum的jdk安装包</span><br><span class="line">    </span><br><span class="line">$ yum install java-1.8.0-openjdk*  -- 安装java 1.8.0所有Java程序  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 等待安装完成输入一下命令验证安装是否完成</span></span><br><span class="line">$ java -version   -- 输出如下:</span><br><span class="line"></span><br><span class="line">Openjdk version <span class="string">"1.8.0_191"</span></span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_191-b12)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)</span><br></pre></td></tr></table></figure>
+<h6 id="3-安装-Nginx"><a href="#3-安装-Nginx" class="headerlink" title="3. 安装 Nginx"></a>3. 安装 Nginx</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ yum install nginx   -- 使用yum安装nginx</span><br><span class="line">    </span><br><span class="line">$ chkconfig nginx on  -- 设置开机启动</span><br><span class="line">    </span><br><span class="line">$ systemctl start nginx   -- 启动nginx (<span class="string">"service nginx start"</span>是centos6.x的命令)</span><br><span class="line">    </span><br><span class="line">$ systemctl stop nginx    -- 停止nginx (<span class="string">"service nginx stop"</span>是centos6.x的命令)</span><br><span class="line">    </span><br><span class="line">$ cat /etc/nginx/nginx.conf   -- nginx 配置文件</span><br><span class="line">    </span><br><span class="line">$ firewall-cmd --permanent --zone=public --add-port=80/tcp    -- 添加到防火墙</span><br><span class="line">    </span><br><span class="line">$ systemctl restart firewalld     -- 重启防火墙</span><br><span class="line"></span><br><span class="line">$ nginx -t     -- 测试nginx配置文件是否正常,若错误会直接抛出,切忌改动配置文件后直接重启服务!校验是唯一的真理</span><br><span class="line"></span><br><span class="line">$ nginx -s reload     -- 重载配置文件,无需重启nginx服务,变动nginx配置可以直接用这个直接生效,不宕机</span><br></pre></td></tr></table></figure>
+<h6 id="4-安装-nodejs"><a href="#4-安装-nodejs" class="headerlink" title="4. 安装 nodejs"></a>4. 安装 nodejs</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -</span><br><span class="line">    </span><br><span class="line">$ yum install -y nodejs</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 如需要安装其它版本请查看，https://github.com/nodesource/distributions</span></span><br></pre></td></tr></table></figure>
+<h6 id="5-安装-MySQL"><a href="#5-安装-MySQL" class="headerlink" title="5. 安装 MySQL"></a>5. 安装 MySQL</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5.1). 设置 MySQL 8.0 安装源：</span></span><br><span class="line"></span><br><span class="line">    $ sudo rpm -Uvh https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.2). 安装 MySQL 8.0：</span></span><br><span class="line"></span><br><span class="line">    $ sudo yum --enablerepo=mysql80-community install mysql-community-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.3). 查看 root 用户临时密码：</span></span><br><span class="line"></span><br><span class="line">    $ grep <span class="string">"A temporary password"</span> /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 出现如下：（后面引号内的为临时密码）</span></span><br><span class="line">    </span><br><span class="line">    $ A temporary password is generated <span class="keyword">for</span> root@localhost: `o?7rkoXeVVey`</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.4). 设置 MySQL 8.0 新密码：</span></span><br><span class="line"></span><br><span class="line">    $ mysql_secure_installation</span><br><span class="line">    </span><br><span class="line">    第一步：设置新的（Mysql中的）root用户密码（需由大写、小写、数字、符号四种混合组成）</span><br><span class="line">    第二步：配置是否启用密码安全性检查插件，保证密码强度，按需启用。建议【y】</span><br><span class="line">    第三步：选择一种密码强度，0【LOW】是长度八位以上；1【MEDIUM】是长度八位以上，而且由数字、大小写、符号组成；2【STRONG】是长度八位以上，而且由数字、大小写、符号组成，并通过字典文件检测，按需选择。建议【2】</span><br><span class="line">    第四步：选择是否删除匿名用户。建议【y】</span><br><span class="line">    第五步：选择是否运行root用户远程连接。建议【n】可根据下文添加另一远程用户</span><br><span class="line">    第六步：选择是否删除测试数据库。建议【y】</span><br><span class="line">    第七步：选择是否刷新privilege表，即是否执行flush privileges命令。建议【y】</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.5). 设置 MySQL 8.0 远程访问：</span></span><br><span class="line"></span><br><span class="line">    $ mysql -uroot -p       -- 登录mysql控制台</span><br><span class="line">    </span><br><span class="line">    $ grant all privileges on *.* to root@<span class="string">"%"</span> identified by <span class="string">"密码"</span>;       -- 授权给用户远程连接权限</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.6). 设置 MySQL 8.0 防火墙：</span></span><br><span class="line"></span><br><span class="line">    $ sudo firewall-cmd --zone=public --permanent --add-service=mysql       -- 将 MySQL 服务加入防火墙</span><br><span class="line">      </span><br><span class="line">    $ sudo systemctl restart firewalld       -- 重启防火墙</span><br><span class="line">    </span><br><span class="line">需要注意一个问题：本文使用阿里云服务器，webhooks 端口默认是不允许访问的需要到控制台中添加安全组</span><br></pre></td></tr></table></figure>
+<h6 id="6-安装-Redis"><a href="#6-安装-Redis" class="headerlink" title="6. 安装 Redis"></a>6. 安装 Redis</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 6.1). 更新yum源</span></span><br><span class="line"></span><br><span class="line">    $ yum update</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 6.2). 安装最新的 redis-rpm 源</span></span><br><span class="line"></span><br><span class="line">    $ yum install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6.3). 安装 Redis</span></span><br><span class="line"></span><br><span class="line">    $ yum --enablerepo=remi install redis</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 6.4). 开机自启 Redis</span></span><br><span class="line"></span><br><span class="line">    $ systemctl <span class="built_in">enable</span> redis</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.5). 设置 redis.conf</span></span><br><span class="line"></span><br><span class="line">    $ vim /etc/redis.conf</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">bind</span> 127.0.0.1 改为 <span class="built_in">bind</span> 0.0.0.0(可选) 或注释掉，当然也可改成访问者的IP</span><br><span class="line">    </span><br><span class="line">    推荐给Redis设置密码，取消注释这一行：</span><br><span class="line">    <span class="comment">#requirepass foobared</span></span><br><span class="line">    foobared即当前密码，可以自行修改为 requirepass 密码</span><br><span class="line">    </span><br><span class="line">    $ sudo systemctl restart redis      -- 重启Redis服务。</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6.6). 设置防火墙：</span></span><br><span class="line"></span><br><span class="line">    $ firewall-cmd --permanent --zone=public --add-port=6379/tcp      -- 将 6379 端口加入防火墙</span><br><span class="line">      </span><br><span class="line">    $ sudo systemctl restart firewalld       -- 重启防火墙</span><br><span class="line">    </span><br><span class="line">需要注意一个问题：本文使用阿里云服务器，Redis 端口默认是不允许访问的需要到控制台中添加安全组</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">阿里云服务器,Centos 7</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/27/阿里云开发环境/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Linux学习" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/27/Linux学习/">Linux 学习</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/27/Linux学习/" class="archive-article-date">
+  	<time datetime="2018-12-27T03:31:58.457Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="系统常用命令"><a href="#系统常用命令" class="headerlink" title="系统常用命令"></a>系统常用命令</h6><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">whereis java</td>
+<td style="text-align:center">查看软件路径</td>
+</tr>
+<tr>
+<td style="text-align:center">which java</td>
+<td style="text-align:center">查看软件执行路径</td>
+</tr>
+<tr>
+<td style="text-align:center">cut -d : -f 1 /etc/passwd</td>
+<td style="text-align:center">查看系统中有哪些用户</td>
+</tr>
+<tr>
+<td style="text-align:center">chmod -R “权限” “文件”</td>
+<td style="text-align:center">设置文件权限</td>
+</tr>
+<tr>
+<td style="text-align:center">mkdir “目录名称”</td>
+<td style="text-align:center">创建目录</td>
+</tr>
+<tr>
+<td style="text-align:center">touch “文件名称”</td>
+<td style="text-align:center">创建文件</td>
+</tr>
+<tr>
+<td style="text-align:center">rm -r “文件名称”</td>
+<td style="text-align:center">删除文件</td>
+</tr>
+<tr>
+<td style="text-align:center">rm -rf “文件名称”</td>
+<td style="text-align:center">删除文件(不提示直接删除)</td>
+</tr>
+<tr>
+<td style="text-align:center">cat “文件名称”</td>
+<td style="text-align:center">输出文件内容</td>
+</tr>
+<tr>
+<td style="text-align:center">userdel -rf “用户名”</td>
+<td style="text-align:center">删除用户和主目录</td>
+</tr>
+</tbody>
+</table>
+<h6 id="firewall-防火墙常用命令"><a href="#firewall-防火墙常用命令" class="headerlink" title="firewall 防火墙常用命令"></a>firewall 防火墙常用命令</h6><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">firewall-cmd –version</td>
+<td style="text-align:center">查看版本</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –help</td>
+<td style="text-align:center">查看帮助</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –state</td>
+<td style="text-align:center">显示状态</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –zone=public –list-ports</td>
+<td style="text-align:center">查看所有打开的端口</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –reload</td>
+<td style="text-align:center">更新防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –get-active-zones</td>
+<td style="text-align:center">查看区域信息</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –get-zone-of-interface=eth0</td>
+<td style="text-align:center">查看指定接口所属区域</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –panic-on</td>
+<td style="text-align:center">拒绝所有包</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –panic-off</td>
+<td style="text-align:center">取消拒绝状态</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –query-panic</td>
+<td style="text-align:center">查看是否拒绝</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –query-port=端口号/tcp</td>
+<td style="text-align:center">查看指定端口是否添加到防火墙内</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –zone=public –add-port=端口号/tcp –permanent</td>
+<td style="text-align:center">添加端口至防火墙 –permanent永久生效，没有此参数重启后失效</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –zone=public –permanent –add-service=服务名称</td>
+<td style="text-align:center">添加服务至防火墙 –permanent永久生效，没有此参数重启后失效</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –reload</td>
+<td style="text-align:center">重新载入</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –zone= public –remove-port=端口号/tcp –permanent</td>
+<td style="text-align:center">删除端口防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl start firewalld</td>
+<td style="text-align:center">启动防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl stop firewalld</td>
+<td style="text-align:center">关闭防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl restart firewalld</td>
+<td style="text-align:center">重启防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl status firewalld</td>
+<td style="text-align:center">查看防火墙状态</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl enable firewalld</td>
+<td style="text-align:center">开机自启防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl disable firewalld.</td>
+<td style="text-align:center">开机禁止启动防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl is-enabled firewalld</td>
+<td style="text-align:center">查看防火墙是否开机自启</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl list-unit-files:grep enabled</td>
+<td style="text-align:center">查看已启动的服务(命令中的冒号需要替换成竖杆)</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl –failed</td>
+<td style="text-align:center">查看启动失败的服务列表</td>
+</tr>
+</tbody>
+</table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Centos 7</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/27/Linux学习/">展开全文 >></a>
         </p>
       
 
@@ -291,206 +602,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/26/部署hexo/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-阿里云开发环境" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/26/阿里云开发环境/">Centos 7 开发环境搭建</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/26/阿里云开发环境/" class="archive-article-date">
-  	<time datetime="2018-12-26T14:46:41.746Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="1-yum-操作"><a href="#1-yum-操作" class="headerlink" title="1. yum 操作"></a>1. yum 操作</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ yum update   -- 更新 yum 下的所有软件包</span><br><span class="line">   </span><br><span class="line"><span class="comment"># 查看安装位置 （通过rpm）</span></span><br><span class="line">   </span><br><span class="line">$ rpm -qa|grep java    -- 通过rpm和管道查找具体安装文件全称</span><br><span class="line">   </span><br><span class="line">$ rpm -ql <span class="string">"文件名称"</span>   -- 根据具体文件全称显示安装后文件所在路径</span><br></pre></td></tr></table></figure>
-<h6 id="2-安装-Java-SDK-（本文安装-JDK-1-8）"><a href="#2-安装-Java-SDK-（本文安装-JDK-1-8）" class="headerlink" title="2. 安装 Java SDK （本文安装 JDK 1.8）"></a>2. 安装 Java SDK （本文安装 JDK 1.8）</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y list java*   -- 查看yum的jdk安装包</span><br><span class="line">    </span><br><span class="line">$ yum install java-1.8.0-openjdk*  -- 安装java 1.8.0所有Java程序  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 等待安装完成输入一下命令验证安装是否完成</span></span><br><span class="line">$ java -version   -- 输出如下:</span><br><span class="line"></span><br><span class="line">Openjdk version <span class="string">"1.8.0_191"</span></span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_191-b12)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)</span><br></pre></td></tr></table></figure>
-<h6 id="3-安装-Nginx"><a href="#3-安装-Nginx" class="headerlink" title="3. 安装 Nginx"></a>3. 安装 Nginx</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ yum install nginx   -- 使用yum安装nginx</span><br><span class="line">    </span><br><span class="line">$ chkconfig nginx on  -- 设置开机启动</span><br><span class="line">    </span><br><span class="line">$ systemctl start nginx   -- 启动nginx (<span class="string">"service nginx start"</span>是centos6.x的命令)</span><br><span class="line">    </span><br><span class="line">$ systemctl stop nginx    -- 停止nginx (<span class="string">"service nginx stop"</span>是centos6.x的命令)</span><br><span class="line">    </span><br><span class="line">$ cat /etc/nginx/nginx.conf   -- nginx 配置文件</span><br><span class="line">    </span><br><span class="line">$ firewall-cmd --permanent --zone=public --add-port=80/tcp    -- 添加到防火墙</span><br><span class="line">    </span><br><span class="line">$ systemctl restart firewalld     -- 重启防火墙</span><br><span class="line"></span><br><span class="line">$ nginx -t     -- 测试nginx配置文件是否正常,若错误会直接抛出,切忌改动配置文件后直接重启服务!校验是唯一的真理</span><br><span class="line"></span><br><span class="line">$ nginx -s reload     -- 重载配置文件,无需重启nginx服务,变动nginx配置可以直接用这个直接生效,不宕机</span><br></pre></td></tr></table></figure>
-<h6 id="4-安装-nodejs"><a href="#4-安装-nodejs" class="headerlink" title="4. 安装 nodejs"></a>4. 安装 nodejs</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -</span><br><span class="line">    </span><br><span class="line">$ yum install -y nodejs</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 如需要安装其它版本请查看，https://github.com/nodesource/distributions</span></span><br></pre></td></tr></table></figure>
-<h6 id="5-安装-MySQL"><a href="#5-安装-MySQL" class="headerlink" title="5. 安装 MySQL"></a>5. 安装 MySQL</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 5.1). 设置 MySQL 8.0 安装源：</span></span><br><span class="line"></span><br><span class="line">    $ sudo rpm -Uvh https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.2). 安装 MySQL 8.0：</span></span><br><span class="line"></span><br><span class="line">    $ sudo yum --enablerepo=mysql80-community install mysql-community-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.3). 查看 root 用户临时密码：</span></span><br><span class="line"></span><br><span class="line">    $ grep <span class="string">"A temporary password"</span> /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 出现如下：（后面引号内的为临时密码）</span></span><br><span class="line">    </span><br><span class="line">    $ A temporary password is generated <span class="keyword">for</span> root@localhost: `o?7rkoXeVVey`</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.4). 设置 MySQL 8.0 新密码：</span></span><br><span class="line"></span><br><span class="line">    $ mysql_secure_installation</span><br><span class="line">    </span><br><span class="line">    第一步：设置新的（Mysql中的）root用户密码（需由大写、小写、数字、符号四种混合组成）</span><br><span class="line">    第二步：配置是否启用密码安全性检查插件，保证密码强度，按需启用。建议【y】</span><br><span class="line">    第三步：选择一种密码强度，0【LOW】是长度八位以上；1【MEDIUM】是长度八位以上，而且由数字、大小写、符号组成；2【STRONG】是长度八位以上，而且由数字、大小写、符号组成，并通过字典文件检测，按需选择。建议【2】</span><br><span class="line">    第四步：选择是否删除匿名用户。建议【y】</span><br><span class="line">    第五步：选择是否运行root用户远程连接。建议【n】可根据下文添加另一远程用户</span><br><span class="line">    第六步：选择是否删除测试数据库。建议【y】</span><br><span class="line">    第七步：选择是否刷新privilege表，即是否执行flush privileges命令。建议【y】</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.5). 设置 MySQL 8.0 远程访问：</span></span><br><span class="line"></span><br><span class="line">    $ mysql -uroot -p       -- 登录mysql控制台</span><br><span class="line">    </span><br><span class="line">    $ grant all privileges on *.* to root@<span class="string">"%"</span> identified by <span class="string">"密码"</span>;       -- 授权给用户远程连接权限</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 5.6). 设置 MySQL 8.0 防火墙：</span></span><br><span class="line"></span><br><span class="line">    $ sudo firewall-cmd --zone=public --permanent --add-service=mysql       -- 将 MySQL 服务加入防火墙</span><br><span class="line">      </span><br><span class="line">    $ sudo systemctl restart firewalld       -- 重启防火墙</span><br><span class="line">    </span><br><span class="line">需要注意一个问题：本文使用阿里云服务器，webhooks 端口默认是不允许访问的需要到控制台中添加安全组</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">阿里云服务器,Centos 7</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/26/阿里云开发环境/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux学习" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/25/Linux学习/">Linux 学习</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/25/Linux学习/" class="archive-article-date">
-  	<time datetime="2018-12-25T09:14:44.970Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h6><table>
-<thead>
-<tr>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">whereis java</td>
-<td style="text-align:center">查看软件路径</td>
-</tr>
-<tr>
-<td style="text-align:center">which java</td>
-<td style="text-align:center">查看软件执行路径</td>
-</tr>
-<tr>
-<td style="text-align:center">cut -d : -f 1 /etc/passwd</td>
-<td style="text-align:center">查看系统中有哪些用户</td>
-</tr>
-<tr>
-<td style="text-align:center">chmod -R “权限” “文件”</td>
-<td style="text-align:center">设置文件权限</td>
-</tr>
-<tr>
-<td style="text-align:center">mkdir “目录名称”</td>
-<td style="text-align:center">创建目录</td>
-</tr>
-<tr>
-<td style="text-align:center">touch “文件名称”</td>
-<td style="text-align:center">创建文件</td>
-</tr>
-<tr>
-<td style="text-align:center">rm -r “文件名称”</td>
-<td style="text-align:center">删除文件</td>
-</tr>
-<tr>
-<td style="text-align:center">rm -rf “文件名称”</td>
-<td style="text-align:center">删除文件(不提示直接删除)</td>
-</tr>
-<tr>
-<td style="text-align:center">cat “文件名称”</td>
-<td style="text-align:center">输出文件内容</td>
-</tr>
-<tr>
-<td style="text-align:center">userdel -rf “用户名”</td>
-<td style="text-align:center">删除用户和主目录</td>
-</tr>
-</tbody>
-</table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Centos 7</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/25/Linux学习/">展开全文 >></a>
         </p>
       
 

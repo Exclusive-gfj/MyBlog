@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="//blog.17terrific.com">
   <title>Linux 学习 | Exclusive丨星空灬</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用命令   命令 描述     whereis java 查看软件路径   which java 查看软件执行路径   cut -d : -f 1 /etc/passwd 查看系统中有哪些用户   chmod -R “权限” “文件” 设置文件权限   mkdir “目录名称” 创建目录   touch “文件名称” 创建文件   rm -r “文件名称” 删除文件   rm -rf “文件名称">
+  <meta name="description" content="系统常用命令   命令 描述     whereis java 查看软件路径   which java 查看软件执行路径   cut -d : -f 1 /etc/passwd 查看系统中有哪些用户   chmod -R “权限” “文件” 设置文件权限   mkdir “目录名称” 创建目录   touch “文件名称” 创建文件   rm -r “文件名称” 删除文件   rm -rf “文件">
 <meta name="keywords" content="Centos 7">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 学习">
-<meta property="og:url" content="//blog.17terrific.com/2018/12/25/Linux学习/index.html">
+<meta property="og:url" content="//blog.17terrific.com/2018/12/27/Linux学习/index.html">
 <meta property="og:site_name" content="Exclusive丨星空灬">
-<meta property="og:description" content="常用命令   命令 描述     whereis java 查看软件路径   which java 查看软件执行路径   cut -d : -f 1 /etc/passwd 查看系统中有哪些用户   chmod -R “权限” “文件” 设置文件权限   mkdir “目录名称” 创建目录   touch “文件名称” 创建文件   rm -r “文件名称” 删除文件   rm -rf “文件名称">
+<meta property="og:description" content="系统常用命令   命令 描述     whereis java 查看软件路径   which java 查看软件执行路径   cut -d : -f 1 /etc/passwd 查看系统中有哪些用户   chmod -R “权限” “文件” 设置文件权限   mkdir “目录名称” 创建目录   touch “文件名称” 创建文件   rm -r “文件名称” 删除文件   rm -rf “文件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-25T09:14:44.970Z">
+<meta property="og:updated_time" content="2018-12-27T03:31:58.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 学习">
-<meta name="twitter:description" content="常用命令   命令 描述     whereis java 查看软件路径   which java 查看软件执行路径   cut -d : -f 1 /etc/passwd 查看系统中有哪些用户   chmod -R “权限” “文件” 设置文件权限   mkdir “目录名称” 创建目录   touch “文件名称” 创建文件   rm -r “文件名称” 删除文件   rm -rf “文件名称">
+<meta name="twitter:description" content="系统常用命令   命令 描述     whereis java 查看软件路径   which java 查看软件执行路径   cut -d : -f 1 /etc/passwd 查看系统中有哪些用户   chmod -R “权限” “文件” 设置文件权限   mkdir “目录名称” 创建目录   touch “文件名称” 创建文件   rm -r “文件名称” 删除文件   rm -rf “文件">
   
   
     <link rel="icon" href="http://blog.17terrific.com/assets/images/favicon.png">
@@ -157,15 +157,15 @@
   
 
         
-        <a href="/2018/12/25/Linux学习/" class="archive-article-date">
-  	<time datetime="2018-12-25T09:14:44.970Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-25</time>
+        <a href="/2018/12/27/Linux学习/" class="archive-article-date">
+  	<time datetime="2018-12-27T03:31:58.457Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h6 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h6><table>
+        <h6 id="系统常用命令"><a href="#系统常用命令" class="headerlink" title="系统常用命令"></a>系统常用命令</h6><table>
 <thead>
 <tr>
 <th style="text-align:center">命令</th>
@@ -215,6 +215,112 @@
 </tr>
 </tbody>
 </table>
+<h6 id="firewall-防火墙常用命令"><a href="#firewall-防火墙常用命令" class="headerlink" title="firewall 防火墙常用命令"></a>firewall 防火墙常用命令</h6><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">firewall-cmd –version</td>
+<td style="text-align:center">查看版本</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –help</td>
+<td style="text-align:center">查看帮助</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –state</td>
+<td style="text-align:center">显示状态</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –zone=public –list-ports</td>
+<td style="text-align:center">查看所有打开的端口</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –reload</td>
+<td style="text-align:center">更新防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –get-active-zones</td>
+<td style="text-align:center">查看区域信息</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –get-zone-of-interface=eth0</td>
+<td style="text-align:center">查看指定接口所属区域</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –panic-on</td>
+<td style="text-align:center">拒绝所有包</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –panic-off</td>
+<td style="text-align:center">取消拒绝状态</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –query-panic</td>
+<td style="text-align:center">查看是否拒绝</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –query-port=端口号/tcp</td>
+<td style="text-align:center">查看指定端口是否添加到防火墙内</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –zone=public –add-port=端口号/tcp –permanent</td>
+<td style="text-align:center">添加端口至防火墙 –permanent永久生效，没有此参数重启后失效</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –zone=public –permanent –add-service=服务名称</td>
+<td style="text-align:center">添加服务至防火墙 –permanent永久生效，没有此参数重启后失效</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –reload</td>
+<td style="text-align:center">重新载入</td>
+</tr>
+<tr>
+<td style="text-align:center">firewall-cmd –zone= public –remove-port=端口号/tcp –permanent</td>
+<td style="text-align:center">删除端口防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl start firewalld</td>
+<td style="text-align:center">启动防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl stop firewalld</td>
+<td style="text-align:center">关闭防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl restart firewalld</td>
+<td style="text-align:center">重启防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl status firewalld</td>
+<td style="text-align:center">查看防火墙状态</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl enable firewalld</td>
+<td style="text-align:center">开机自启防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl disable firewalld.</td>
+<td style="text-align:center">开机禁止启动防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl is-enabled firewalld</td>
+<td style="text-align:center">查看防火墙是否开机自启</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl list-unit-files:grep enabled</td>
+<td style="text-align:center">查看已启动的服务(命令中的冒号需要替换成竖杆)</td>
+</tr>
+<tr>
+<td style="text-align:center">systemctl –failed</td>
+<td style="text-align:center">查看启动失败的服务列表</td>
+</tr>
+</tbody>
+</table>
 
       
 
@@ -247,7 +353,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/26/阿里云开发环境/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/27/阿里云开发环境/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -256,6 +362,11 @@
       </div>
     </a>
   
+  
+    <a href="/2018/12/26/部署hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Centos 7 自动部署 Hexo 博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
